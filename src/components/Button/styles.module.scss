@@ -1,26 +1,108 @@
 @import '@styles';
 
-.primaryButton {
-  color: $white;
-  background-color: $blue;
-  padding: 1.2rem 1.4rem;
-  border: 1px solid $lochmara;
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
-  font-size: 1rem;
-  outline: none;
-  &:hover {
-    opacity: 0.8;
-  }
-}
+.commonButton {
+  &.MuiButton-root {
+    min-width: 8px;
+    padding: 8px 12px;
+    border-radius: 3px;
+    text-transform: none;
 
-.transparentButton {
-  color: $white;
-  padding: 1.2rem 1.4rem;
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
-  font-size: 1rem;
-  outline: none;
-  border-color: transparent;
-  background-color: transparent;
+    .MuiButton-label {
+      line-height: 16px;
+
+      .MuiButton-startIcon {
+        margin-right: 12px;
+        margin-left: 0;
+      }
+
+      .MuiButton-endIcon {
+        margin-right: 0;
+        margin-left: 12px;
+      }
+    }
+
+    .icon {
+      margin: -4px -8px;
+    }
+  }
+
+  &.MuiButton-contained {
+    background-color: $Light-Blue;
+    color: var(--Color6);
+
+    &:hover {
+      background-color: $Light-Blue2;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &.Mui-focusVisible {
+      background-color: $Light-Blue;
+    }
+
+    &:active {
+      background-color: $Light-Blue2;
+    }
+
+    &.Mui-disabled {
+      background-color: #e2e2e2;
+      color: #fafafa;
+    }
+  }
+
+  &.MuiButton-outlined {
+    padding: 7px 11px;
+    border: 1px solid #e2e2e2;
+    background-color: transparent;
+    color: $Light-Blue;
+
+    &:hover {
+      background-color: #f5f5f5;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &.Mui-focusVisible {
+      border-color: #bababa;
+      background-color: #f5f5f5;
+    }
+
+    &:active {
+      border-color: #bababa;
+      background-color: #e2e2e2;
+    }
+
+    &.Mui-disabled {
+      border-color: #cecece;
+      color: #cecece;
+    }
+  }
+
+  &.MuiButton-text {
+    color: #454545;
+
+    &:hover {
+      background-color: #f5f5f5;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &.Mui-focusVisible {
+      background-color: #f5f5f5;
+    }
+
+    &:active {
+      background-color: #e2e2e2;
+    }
+
+    &.Mui-disabled {
+      color: #cecece;
+    }
+  }
 }

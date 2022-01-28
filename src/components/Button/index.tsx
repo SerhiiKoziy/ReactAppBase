@@ -1,23 +1,21 @@
 import React from 'react';
+import clsx from 'clsx';
+
+import { ButtonProps } from '@material-ui/core/Button';
+import { Button as ButtonComponent } from '@material-ui/core';
 
 import styles from './styles.module.scss';
 
-interface Props {
-  children?: JSX.Element;
-  variant?: string;
-  onClick?: () => void;
-}
+export const Button: React.FC<ButtonProps> = (props) => {
+  const { variant, disableElevation, disableRipple, className, ...rest } = props
 
-const Button = ({ children, variant, onClick }: Props) => {
-  let buttonClass = styles.primaryButton;
-  if (variant && variant === "transparent") {
-    buttonClass = styles.transparentButton;
-  }
   return (
-    <button className={buttonClass} onClick={onClick}>
-      {children}
-    </button>
-  );
-};
-
-export default Button;
+    <ButtonComponent
+      className={clsx(styles.commonButton, className)}
+      variant={variant ?? 'contained'}
+      disableElevation={disableElevation ?? true}
+      disableRipple={disableRipple ?? true}
+      { ...rest }
+    />
+  )
+}

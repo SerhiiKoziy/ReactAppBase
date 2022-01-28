@@ -1,7 +1,7 @@
 export const START_FETCHING = 'START_FETCHING';
 export const STOP_FETCHING = 'STOP_FETCHING';
 
-const loadingReducer = (state: boolean = true, { type }: { type: string }) => {
+const loadingReducer = (state: boolean = true, { type }: { type: string }): boolean => {
   switch (type) {
     case START_FETCHING:
       return true;

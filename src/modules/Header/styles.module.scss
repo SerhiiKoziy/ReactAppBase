@@ -1,3 +1,5 @@
+@import '@styles';
+
 .header {
   height: 60px;
 
@@ -7,5 +9,14 @@
 
   padding: 0 40px;
 
-  background: #285596;
+  border-bottom: 1px solid $Light-Blue2;
+
+  span {
+    color: $Light-Blue2;
+  }
+
+  .authModal {
+    width: 100%;
+    max-width: 500px;
+  }
 }

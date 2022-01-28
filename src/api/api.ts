@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const API_URL = 'http://api.';
 
-export const getTiles = async (position: any) => {
+export const getData = async (position: any) => {
   return axios.get(`https://${API_URL}`, {
     params: {
 

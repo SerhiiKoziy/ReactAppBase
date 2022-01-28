@@ -1,12 +1,69 @@
-$white: #fff;
-$black: #1a1a1a;
+/*
+  Standard
+*/
+$Black: #000000;
+$White: #ffffff;
 
-$grey: #585858;
-$alto: #Dd9d9d9;
-$blue: #006ec5;
-$lochmara: #007edb;
-$lightblue: #00b3e3;
+/*
+  Dark theme
+*/
+$Dark-BlackA20: rgba($Black, 0.2);
+$Dark-BlackA60: rgba($Black, 0.6);
+$Dark-WhiteA38: rgba($White, 0.38);
+$Dark-WhiteA12: rgba($White, 0.12);
+$Dark-Teal1: #03DAC5;
+$Dark-Teal1A24: rgba($Dark-Teal1, 0.24);
+$Dark-Grey1: linear-gradient(0deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.16)), #212121;
+$Dark-Grey2: #757575;
+$Dark-Grey3: #E0E0E0;
+$Dark-Red1: #EE5858;
+$Dark-Yellow1: #EEC458;
+$Dark-PanelBackground: linear-gradient(0deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.12)), #121212;
+$Dark-PanelBackground-SubPanel: linear-gradient(180deg, rgba(17, 17, 17, 0.4) 5px, rgba(51, 51, 51, 0.4) 12px), #333333;
 
-$red: #f1000085;
-$lightRed: #d0021b;
-$flamingo: #d0021b;
+/*
+  Light theme
+*/
+$Light-BlackA20: rgba($Black, 0.2);
+$Light-BlackA60: rgba($Black, 0.6);
+$Light-WhiteA38: rgba($White, 0.38);
+$Light-WhiteA12: rgba($White, 0.12);
+$Light-WhiteA90: rgba($White, 0.9);
+$Light-Green1: #344938;
+$Light-Green2: #689066;
+$Light-Green2A24: rgba($Light-Green2, 0.24);
+$Light-Blue: #0f63cf;
+$Light-Blue2: #094ca2;
+$Light-Grey1: #414042;
+$Light-Grey2: #e1e1e1;
+$Light-Grey3: #f8f8f8;
+$Light-Grey4: #6B6B6C;
+$Light-Red1: #EE5858;
+$Light-Yellow1: #F6B611;
+$Light-PanelBackground: $Light-Green1;
+$Light-PanelBackground-SubPanel: linear-gradient(180deg, rgba($Light-Grey1, 0.4) 5px, rgba($Light-Grey2, 0.4) 12px), $Light-Grey2;
+
+@mixin LightTheme {
+  --Color1: #{$Light-PanelBackground};
+  --Color2: #{$Black};
+  --Color3: #{$Light-Blue};
+  --Color4: #{$Light-Grey2};
+  --Color6: #{$White};
+  --Color7: #{$Light-Red1};
+  --Color8: #{$Light-Grey1};
+  --Color9: #{$Light-Yellow1};
+  --Color10: #{$Light-Green2A24};
+  --Color11: #{$Light-PanelBackground-SubPanel};
+  --Color12: #{$Light-WhiteA12};
+  --Color13: #{$Light-WhiteA38};
+  --Color14: #{$Light-BlackA20};
+  --Color15: #{$Light-Grey3};
+  --Color16: #{$Light-Green1};
+  --Color17: #{$Light-Grey4};
+  --Color18: #{$Light-BlackA60};
+  --Color19: #{$Light-WhiteA90};
+}
+
+:root {
+  @include LightTheme; // Theme global definition
+}

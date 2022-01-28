@@ -1,0 +1,73 @@
+.input {
+  display: flex;
+
+  .MuiOutlinedInput-adornedEnd {
+    padding: 0;
+  }
+
+  &.MuiFormControl-marginNormal {
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+
+  .MuiInputLabel-formControl {
+    position: unset;
+    transform: unset;
+    line-height: 16px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #808080;
+    padding-left: 2px;
+    margin-bottom: 4px;
+  }
+  
+  .MuiInputBase-root {
+    border-radius: 2px;
+
+    .MuiOutlinedInput-notchedOutline {
+      border-color: #cecece;
+    }
+
+    &:hover .MuiOutlinedInput-notchedOutline {
+      border-color: #cecece;
+    }
+
+    &.Mui-error {
+      box-shadow: 0 0 4px rgba(191, 26, 47, 0.4);
+
+      .MuiOutlinedInput-notchedOutline {
+        border-color: #BF1A2F;
+      }
+    }
+
+    &.Mui-focused .MuiOutlinedInput-notchedOutline {
+      border-color: #0F9DF0;
+      border-width: 1px;
+      box-shadow: 0 0 4px rgba(15, 157, 240, 0.4);
+    }
+  }
+
+  .MuiInputBase-input {
+    box-sizing: border-box;
+    height: 32px;
+    color: #313131;
+    line-height: 16px;
+    padding: 8px 8px;
+
+    &.MuiOutlinedInput-inputMultiline {
+      height: auto;
+    }
+  }
+
+  .MuiOutlinedInput-notchedOutline {
+    top: 0;
+
+    legend {
+      display: none;
+    }
+  }
+
+  .MuiOutlinedInput-multiline {
+    padding: 0;
+  }
+}

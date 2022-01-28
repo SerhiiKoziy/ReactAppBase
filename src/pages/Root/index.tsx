@@ -16,7 +16,7 @@ interface IRootProps {
 }
 
 const Root = ({ children }: IRootProps) => {
-  const [ openAuth, setOpenAuth ] = useState<boolean>(false);
+  const [openAuth, setOpenAuth] = useState<boolean>(false);
   const dispatch = useDispatch();
 
   useEffect(
@@ -37,7 +37,7 @@ const Root = ({ children }: IRootProps) => {
             {
               [styles.open]: openAuth,
               [styles.close]: !openAuth,
-            }
+            },
           )
         }
       >
