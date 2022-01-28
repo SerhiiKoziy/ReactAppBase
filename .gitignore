@@ -22,12 +22,4 @@ mods/
 .settings
 nb-configuration.xml
 
-DashboardFrontend/src/main/webapp/*
-!DashboardFrontend/src/main/webapp/WEB-INF/
-!DashboardFrontend/src/main/webapp/status/
-DashboardFrontend/src/main/webapp/status/dashboardBackends.json
-
-DashboardFrontend/src/main/utils/coverage/
-DashboardFrontend/src/main/stats.json
-DashboardFrontend/src/main/debug.log
 npm-debug.log

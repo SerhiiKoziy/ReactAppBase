@@ -2,15 +2,12 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
-const TSLintPlugin = require('tslint-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const autoprefixer = require('autoprefixer');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const safePostCssParser = require('postcss-safe-parser');
 const StatsPlugin = require('stats-webpack-plugin');
 const { getIfUtils, removeEmpty } = require('webpack-config-utils');
-const { getLocalIdent } = require('css-loader/dist/utils');
 
 const { ifDevelopment, ifProduction } = getIfUtils(process.env.NODE_ENV || 'development');
 const { resolve, join } = require('path');
@@ -19,6 +16,7 @@ const { resolve, join } = require('path');
 const PORT = 3000;
 const url = `http://localhost:${PORT}`;
 const SRC = resolve(__dirname, 'src');
+const path = require('path')
 
 const stats = {
   assets: false,
@@ -54,6 +52,35 @@ const aliasDefault = {
   '@modules': join(SRC, 'modules'),
   '@typing': join(SRC, 'types'),
 };
+
+const baseUrl = process.cwd();
+const env = 'development';
+
+const getStyleLoaders = () =>
+  [
+    env === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
+    {
+      loader: 'css-loader',
+      options: {
+        url: false,
+        importLoaders: 1,
+        sourceMap: false,
+        esModule: false,
+        modules: {
+          mode: 'local',
+          localIdentName: '[local]',
+        },
+      },
+    },
+    {
+      loader: 'sass-loader',
+      options: {
+        sassOptions: {
+          includePaths: [path.resolve(baseUrl, 'app')],
+        },
+      },
+    },
+  ].filter(Boolean)
 
 const config = async () => {
   // let envs;
@@ -149,45 +176,9 @@ const config = async () => {
           use: ['ts-loader', 'ts-nameof-loader'],
         },
         {
-          test: /\.scss$/,
-          exclude: /node_modules/,
-          use: removeEmpty([
-            ifDevelopment({ loader: 'css-hot-loader' }),
-            {
-              loader: MiniCssExtractPlugin.loader,
-            },
-            {
-              loader: 'css-loader',
-              options: {
-                sourceMap: ifDevelopment(),
-                importLoaders: true,
-                modules: true,
-                localIdentName: '[local]--[hash:base64:5]',
-                camelCase: true,
-                getLocalIdent: (loaderContext, localIdentName, localName, options) => {
-                  if (loaderContext.resourcePath.includes('node_modules')) {
-                    return localName;
-                  }
-                  return getLocalIdent(loaderContext, localIdentName, localName, options);
-                },
-              }
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                plugins: [
-                  autoprefixer(),
-                ],
-                sourceMap: ifDevelopment(),
-              },
-            },
-            {
-              loader: 'sass-loader',
-              query: {
-                sourceMap: ifDevelopment(),
-              },
-            },
-          ]),
+          test: /\.s[ac]ss$/i,
+          use: getStyleLoaders(),
+          sideEffects: true,
         },
         {
           test: /\.css$/,
@@ -309,17 +300,12 @@ const config = async () => {
     },
 
     plugins: removeEmpty([
-      new TSLintPlugin({
-        files: ['./src/**/*.ts'],
-        silent: process.env.TS_LINT_SILEN,
-      }),
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
       new HtmlWebpackPlugin({
         template: join(SRC, 'index.html'),
         filename: 'index.html',
         inject: 'body',
       }),
-      // new webpack.DefinePlugin(envs),
       ifDevelopment(new MiniCssExtractPlugin({
         filename: './styles/style.css',
       })),
