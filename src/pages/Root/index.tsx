@@ -30,22 +30,7 @@ const Root = ({ children }: IRootProps) => {
     <div className={styles.root}>
       <Header />
 
-      <div
-        className={
-          classNames(
-            styles.authWr,
-            {
-              [styles.open]: openAuth,
-              [styles.close]: !openAuth,
-            },
-          )
-        }
-      >
-      </div>
-
       <div className={styles.routeWr}>
-        {children}
-
         <Dashboard />
       </div>
 
